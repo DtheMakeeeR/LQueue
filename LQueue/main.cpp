@@ -17,4 +17,9 @@ void main() {
 		cout << q1.Pop() << " "<< q2.Pop() << endl;
 
 	}
+	cout << (q1 == q2) << endl;
+	cout << (q1 != q2);
+	LQueue<int> q3;
+	q3 = q2;
+	cout << (q3 == q2) << endl;
 }
