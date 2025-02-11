@@ -23,7 +23,7 @@ TEST(LQueue, Correct_Peeks) {
 	for (int i = 1; i < 5; i++) {
 		q1.Push(i);
 		EXPECT_EQ(head, q1.PeekHead());//голова не меняется
-		EXPECT_EQ(i, q1.PeekTail());//хвост совпадает с новым добалвенным
+		EXPECT_EQ(i, q1.PeekTail());//хвост совпадает с новым добавленным
 	}
 }
 TEST(LQueue, Correct_Equal) {
@@ -46,5 +46,13 @@ TEST(LQueue, Correct_Assignment) {
 	EXPECT_EQ(q1, q2);//одинаковые элементы
 	q1.Pop();
 	EXPECT_NE(q1, q2);//скопированы не указатели
+}
+TEST(LQueue, Correct_Clear) {
+	LQueue<int> q1;
+	for (int i = 0; i < 5; i++) {
+		q1.Push(i);
+	}
+	q1.Clear();
+	EXPECT_EQ(q1.IsEmpty(), 1);
 }
 

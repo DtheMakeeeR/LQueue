@@ -14,8 +14,10 @@ public:
 	~LQueue();
 
 	bool IsEmpty() const { return pFirst == nullptr; }
+	bool IsFull();
 	T Pop();
 	void Push(T v);
+	void Clear();
 	T PeekHead();
 	T PeekTail();
 
@@ -50,6 +52,20 @@ LQueue<T>::~LQueue() {
 	while (pFirst != nullptr) Pop();
 }
 
+template<class T>
+bool LQueue<T>::IsFull()
+{
+	Node<T>* tmp;
+	try {
+		tmp = new Node<T>();
+	}
+	catch (...) {
+		return true;
+	}
+	delete tmp;
+	return false;
+}
+
 template <class T>
 T LQueue<T>::Pop() {
 	if (IsEmpty()) throw - 1;
@@ -72,6 +88,12 @@ void LQueue<T>::Push(T v) {
 		pLast->pNext = res;
 		pLast = res;
 	}
+}
+
+template<class T>
+void LQueue<T>::Clear()
+{
+	while (pFirst != nullptr) Pop();
 }
 
 template<class T>
